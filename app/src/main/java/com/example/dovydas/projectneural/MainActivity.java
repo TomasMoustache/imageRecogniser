@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String OUTPUT_NODE = "output_node0";
     private Button button;
     Bitmap picture;
-
+//jhhj
     Graph g;
 
 
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+//dsds
         this.imageView = (ImageView)this.findViewById(R.id.imageView);
         Button photoButton = (Button) this.findViewById(R.id.button111);
         photoButton.setOnClickListener(new View.OnClickListener() {
