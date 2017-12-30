@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dovydas.projectneural.MainActivity">
+
+    <Button
+        android:id="@+id/button111"
+        android:layout_width="158dp"
+        android:layout_height="121dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="259dp" />
+
+    <ImageView
+
+        android:id="@+id/imageView"
+        android:layout_width="338dp"
+        android:layout_height="377dp"
+        app:srcCompat="@android:drawable/alert_light_frame"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+</android.support.constraint.ConstraintLayout>
