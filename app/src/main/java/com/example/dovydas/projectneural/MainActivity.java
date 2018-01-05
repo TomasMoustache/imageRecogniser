@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String OUTPUT_NODE = "output_node0";
     private Button button;
     Bitmap picture;
-//jhhj
     Graph g;
 
 
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//dsds
+
         this.imageView = (ImageView)this.findViewById(R.id.imageView);
         Button photoButton = (Button) this.findViewById(R.id.button111);
         photoButton.setOnClickListener(new View.OnClickListener() {
@@ -71,20 +70,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
         });
-        //SavedModelBundle model = SavedModelBundle.load("C:\\Users\\Dovydas\\Documents\\_Python_neuronai\\keras_to_tensorflow-master\\modelisTensor\\model");
 
-        //this.button.setOnClickListener();
-
-        //------------------prepareModel();
-        //inferenceInterface = new TensorFlowInferenceInterface(model.graph());
-       // inferenceInterface.
-        //inferenceInterface.initializeTensorFlow(getAssets(), MODEL_FILE);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void prepareModel() {
         //TensorFlowImageClassifier classifier = new TensorFlowImageClassifier(this); //new TensorFlowImageClassifier(Activity.findViewById(R.id.));
-        prepareEnv();
+        //prepareEnv();
+        this.button = (Button)findViewById(R.id.button111);
+        ImageTransformer it = new ImageTransformer();
+
+        this.picture = it.resizedImage(this.picture);
+        this.picture = it.convertToGrayscale(this.picture);
+        imageView.setImageBitmap(this.picture);
+
+        this.matrix = it.getMatrixFromImage();
 
 
         byte[] baitai = readBytes("/storage/emulated/0/Documents/model.pb");
@@ -92,10 +92,8 @@ public class MainActivity extends AppCompatActivity {
         g.importGraphDef(baitai);
         Session session = new Session(g);
 
-        //if(tensorImage != null) this.button.setText(tensorImage.intValue());
-        Tensor tensorImage = Tensor.create(matrix);
-
-        Intent intent = new Intent();
+        /*Tensor tensorImage = Tensor.create(matrix);
+        Intent intent = new Intent();*/
         //Bitmap bmp = (Bitmap) intent.getExtras().get("data");
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         this.picture.compress(Bitmap.CompressFormat.JPEG, 100, stream);
@@ -106,18 +104,19 @@ public class MainActivity extends AppCompatActivity {
         labels.add("1");
         labels.add("2");
 
+        /*Nuo constructAndExecuteGraphToNormalizeImage nebeveikia*/
+        /* visas try blokas ir jo naudojamos funkcijos is
+        https://github.com/tensorflow/tensorflow/blob/master/tensorflow/java/src/main/java/org/tensorflow/examples/LabelImage.java*/
+        /* Jo funkcijos pacioj failo apacioje*/
 
         try (Tensor<Float> image = constructAndExecuteGraphToNormalizeImage(imageBytes)) {
-            /*float[] labelProbabilities = executeInceptionGraph(baitai, image);
+            float[] labelProbabilities = executeInceptionGraph(baitai, image);
             int bestLabelIdx = maxIndex(labelProbabilities);
             System.out.println(
                     String.format("BEST MATCH: %s (%.2f%% likely)",
                             labels.get(bestLabelIdx),
-                            labelProbabilities[bestLabelIdx] * 100f));*/
+                            labelProbabilities[bestLabelIdx] * 100f));
         }
-
-
-        //this.button.setText((CharSequence) classifier.doRecognize(this.picture));
     }
 
     private void prepareEnv(){
@@ -168,13 +167,6 @@ public class MainActivity extends AppCompatActivity {
         //return new byte[8];
     }
 
-
-
-
-
-
-
-
     private static int maxIndex(float[] probabilities) {
         int best = 0;
         for (int i = 1; i < probabilities.length; ++i) {
@@ -203,9 +195,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
 
     private static Tensor<Float> constructAndExecuteGraphToNormalizeImage(byte[] imageBytes) {
         try (Graph g = new Graph()) {
