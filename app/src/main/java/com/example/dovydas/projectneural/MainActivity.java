@@ -3,15 +3,10 @@ package com.example.dovydas.projectneural;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,10 +14,10 @@ import android.widget.ImageView;
 import org.tensorflow.DataType;
 import org.tensorflow.Graph;
 import org.tensorflow.Output;
-import org.tensorflow.SavedModelBundle;
 import org.tensorflow.Session;
 import org.tensorflow.Tensor;
 import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
+import org.tensorflow.contrib.android.TensorFlowInferenceInterface2;
 import org.tensorflow.types.UInt8;
 
 import java.io.BufferedInputStream;
@@ -34,6 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     Graph g;
 
 
+    private List<Classifier> mClassifiers = new ArrayList<>();
     private TensorFlowInferenceInterface inferenceInterface;
 
 
@@ -87,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
         this.matrix = it.getMatrixFromImage();
 
 
-        byte[] baitai = readBytes("/storage/emulated/0/Documents/model.pb");
+        /*byte[] baitai = readBytes("/storage/emulated/0/Documents/model.pb");
         Graph g = new Graph();
         g.importGraphDef(baitai);
-        Session session = new Session(g);
+        Session session = new Session(g);*/
 
         /*Tensor tensorImage = Tensor.create(matrix);
         Intent intent = new Intent();*/
@@ -104,11 +101,22 @@ public class MainActivity extends AppCompatActivity {
         labels.add("1");
         labels.add("2");
 
+
+        loadModel();
+
+        int[] intArray = new int[40000];
+        this.picture.getPixels(intArray, 0, this.picture.getWidth(), 0, 0, this.picture.getWidth(), this.picture.getHeight());
+        float[] floatArray = new float[40000];
+        for(int i = 0; i < intArray.length; i++) floatArray[i] = (float)intArray[i];
+        Classification res = (this.mClassifiers.get(0)).recognize(floatArray);
+        this.button.setText("" + res.getLabel() + " " + res.getConf());
         /*Nuo constructAndExecuteGraphToNormalizeImage nebeveikia*/
         /* visas try blokas ir jo naudojamos funkcijos is
         https://github.com/tensorflow/tensorflow/blob/master/tensorflow/java/src/main/java/org/tensorflow/examples/LabelImage.java*/
         /* Jo funkcijos pacioj failo apacioje*/
 
+
+        /*
         try (Tensor<Float> image = constructAndExecuteGraphToNormalizeImage(imageBytes)) {
             float[] labelProbabilities = executeInceptionGraph(baitai, image);
             int bestLabelIdx = maxIndex(labelProbabilities);
@@ -116,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     String.format("BEST MATCH: %s (%.2f%% likely)",
                             labels.get(bestLabelIdx),
                             labelProbabilities[bestLabelIdx] * 100f));
-        }
+        }*/
     }
 
     private void prepareEnv(){
@@ -141,6 +149,33 @@ public class MainActivity extends AppCompatActivity {
             prepareModel();
         }
     }
+
+    private void loadModel() {
+        //The Runnable interface is another way in which you can implement multi-threading other than extending the
+        // //Thread class due to the fact that Java allows you to extend only one class. Runnable is just an interface,
+        // //which provides the method run.
+        // //Threads are implementations and use Runnable to call the method run().
+
+
+        try {
+                    //add 2 classifiers to our classifier arraylist
+                    //the tensorflow classifier and the keras classifier
+                    mClassifiers.add(
+                            TensorFlowClassifier.create(getAssets(), "Keras",
+                                    "/storage/emulated/0/Documents/model.pb", "/storage/emulated/0/Documents/labels.txt", 200,
+                                    "conv2d_1_input", "output_node0", false));//"dense_2/Softmax"
+
+
+                } catch (final Exception e) {
+                    //if they aren't found, throw an error!
+                    throw new RuntimeException("Error initializing classifiers!", e);
+                }
+
+    }
+
+
+
+
 
     private byte[] readBytes(String path)
     {
@@ -176,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return best;
     }
-
+/*
     private static float[] executeInceptionGraph(byte[] graphDef, Tensor<Float> image) {
         try (Graph g = new Graph()) {
             g.importGraphDef(graphDef);
@@ -303,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
             return g.opBuilder(type, type).addInput(in1).addInput(in2).build().<T>output(0);
         }
         private Graph g;
-    }
+    }*/
 
 }
 
