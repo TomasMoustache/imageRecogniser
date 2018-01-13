@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -135,8 +136,11 @@ public class MainActivity extends AppCompatActivity {
     {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        Bitmap bitmapTest = BitmapFactory.decodeFile("/storage/emulated/0/Documents/test1.jpg", options);
-
+        Bitmap bitmapTest = BitmapFactory.decodeFile("/storage/emulated/0/Documents/bike1.jpg", options);
+        ImageTransformer it = new ImageTransformer();
+        bitmapTest = it.resizedImage(bitmapTest);
+        bitmapTest = it.convertToGrayscale(bitmapTest);
+        //bitmapTest = this.picture;
 
         int width = bitmapTest.getWidth();
         int height = bitmapTest.getHeight();
@@ -145,13 +149,24 @@ public class MainActivity extends AppCompatActivity {
         int[] pixels = new int[width * height];
         bitmapTest.getPixels(pixels, 0, width, 0, 0, width, height);
 
-        float[] retPixels = new float[pixels.length];
-        for (int i = 0; i < pixels.length; ++i) {
+        //float[] retPixels = new float[pixels.length];
+        float[] retPixels = new float[width*height];
+        /*for (int i = 0; i < pixels.length; ++i) {
             // Set 0 for white and 255 for black pixel
             int pix = pixels[i];
             int b = pix & 0xff;
             retPixels[i] = (float)((0xff - b)/255.0);
+        }*/
+        for (int i = 0; i < pixels.length; ++i) {
+            int val = pixels[i];
+
+            float red = ((val >> 16) & 0xFF) / 255.0f;
+            float green = ((val >> 8) & 0xFF) / 255.0f;
+            float blue = (val & 0xFF) / 255.0f;
+
+            retPixels[i] = (red+green+blue)/3;
         }
+
         return retPixels;
 
         //return floatArray;
@@ -203,8 +218,6 @@ public class MainActivity extends AppCompatActivity {
                             TensorFlowClassifier.create(getAssets(), "Keras",
                                     "/storage/emulated/0/Documents/model.pb", "/storage/emulated/0/Documents/labels.txt", 200,
                                     "conv2d_1_input", "dense_2/Softmax", false));//"dense_2/Softmax" :"output_node0"
-
-
                 } catch (final Exception e) {
                     //if they aren't found, throw an error!
                     throw new RuntimeException("Error initializing classifiers!", e);

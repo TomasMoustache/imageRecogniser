@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\c58fa2e86eed49e5bc804787f64e05093f8f8241\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c23d5debeeb38105db426f1929e8da973bcd3039\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\fbc7c788e4565d68aae8ca468d9e1cfbf889c4e3\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bdaa6e76544ebb93f178dce6598812eb574a68b4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\9b46b13326d339424ccfde2f69b70175182f0ed7\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0c1a002eae03c1773423a8e334d02ab07aaa769c">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cea7a72007bd087fe60fa930d8a3e350345f31d6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\1cd5dc2cfa71407c0fe5c74872adddb7f05afa37\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_30613347fce195a74bb4c8903970b7eda2b3ea35\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\660798c145680d3be9c0f49c721f8f667045f003\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0a2a2844fc797545019a45cd5973efc431e75dc2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\e1a8eeed6cf62e2ab759c8d5936698c6113b046e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b37263ece6d1dc66591843e43f9dbba2cf208fa3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d14d3d675d2bc79fbae93d7e5496f40e41ee585a">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_12485be184defdc0dfe2af132790c5447ab56e3b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\33bfbd800df7a2a161828b5138545805cb82316e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4f7f9fea50882862abd76582db35ce9ea91c36ef\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_eb58f37f4b56e5ed7e16c228f08548ab7f275184\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\09637ce9b31306eab5c9beca32af35abc7e9fdcb\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9e1506a66b6dae01b8b021106a51525e3eaff320\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\8d466825ea01f4569a4352a154ed30286277838a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_468609d7a8fa6c4182f629cb80c8d8778946aaee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_b4f033a9f5bb2c0902b448ff8a66d0fc2fea435a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_d62e7be9af4e0c48dc0d0e6d826f3a916c6aeaa7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\a09a84e4235751ec03ad394ffba083d96a0dd3d3\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8c999d56d3cf876b7895bd19b59c775b815d8e84\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tomas\.android\build-cache\aa7ac899bc92ac8dfce3d5cd66b8f94b199764ea\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Tomas\Documents\AndroidStudioProjects\imageRecogniser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3583988f5ea77ccc316fabc945a6aac9c7401905\classes.dex" />
+    </item>
+
+</items>
