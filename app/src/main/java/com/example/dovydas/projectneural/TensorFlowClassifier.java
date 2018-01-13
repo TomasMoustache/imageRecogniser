@@ -135,7 +135,7 @@ public class TensorFlowClassifier implements Classifier {
             System.out.println(output[i]);
             System.out.println(labels.get(i));
             if (output[i] > THRESHOLD && output[i] > ans.getConf()) {
-                ans.update(output[i], labels.get(i) + "--"+output.length+"--");
+                ans.update(output[i], labels.get(i));
             }
         }
 
