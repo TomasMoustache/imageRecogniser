@@ -3,6 +3,7 @@ package com.example.dovydas.projectneural;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -29,7 +30,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -92,28 +94,31 @@ public class MainActivity extends AppCompatActivity {
         /*Tensor tensorImage = Tensor.create(matrix);
         Intent intent = new Intent();*/
         //Bitmap bmp = (Bitmap) intent.getExtras().get("data");
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
         this.picture.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte[] imageBytes = stream.toByteArray();
 
         List<String> labels = new ArrayList<String>();
         labels.add("0");
         labels.add("1");
-        labels.add("2");
+        labels.add("2");*/
+
+
 
 
         loadModel();
 
-        int[] intArray = new int[40000];
+        Button btn = (Button)findViewById(R.id.button);
+
+        /*int[] intArray = new int[784];
         this.picture.getPixels(intArray, 0, this.picture.getWidth(), 0, 0, this.picture.getWidth(), this.picture.getHeight());
-        float[] floatArray = new float[40000];
-        for(int i = 0; i < intArray.length; i++) floatArray[i] = (float)intArray[i];
-        Classification res = (this.mClassifiers.get(0)).recognize(floatArray);
+        float[] floatArray = new float[784];
+        for(int i = 0; i < intArray.length; i++) floatArray[i] = (float)intArray[i];*/ //randInt(0,214748364);
+
+        Classification res = (this.mClassifiers.get(0)).recognize(testMetodas());//recognize(floatArray);
         this.button.setText("" + res.getLabel() + " " + res.getConf());
-        /*Nuo constructAndExecuteGraphToNormalizeImage nebeveikia*/
-        /* visas try blokas ir jo naudojamos funkcijos is
-        https://github.com/tensorflow/tensorflow/blob/master/tensorflow/java/src/main/java/org/tensorflow/examples/LabelImage.java*/
-        /* Jo funkcijos pacioj failo apacioje*/
+        //btn.setText(""+floatArray[0]+" " + floatArray[1]+ " " + floatArray[2]);
+
 
 
         /*
@@ -125,6 +130,40 @@ public class MainActivity extends AppCompatActivity {
                             labels.get(bestLabelIdx),
                             labelProbabilities[bestLabelIdx] * 100f));
         }*/
+    }
+    public float[] testMetodas()
+    {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        Bitmap bitmapTest = BitmapFactory.decodeFile("/storage/emulated/0/Documents/test1.jpg", options);
+
+
+        int width = bitmapTest.getWidth();
+        int height = bitmapTest.getHeight();
+
+        // Get 28x28 pixel data from bitmap
+        int[] pixels = new int[width * height];
+        bitmapTest.getPixels(pixels, 0, width, 0, 0, width, height);
+
+        float[] retPixels = new float[pixels.length];
+        for (int i = 0; i < pixels.length; ++i) {
+            // Set 0 for white and 255 for black pixel
+            int pix = pixels[i];
+            int b = pix & 0xff;
+            retPixels[i] = (float)((0xff - b)/255.0);
+        }
+        return retPixels;
+
+        //return floatArray;
+    }
+
+    public static int randInt(int min, int max) {
+        Random rand = new Random();
+
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        //int posNeg = rand.nextInt((0 - 1) + 1) + 0;
+        //if(posNeg == 0) return randomNum;
+        return randomNum;
     }
 
     private void prepareEnv(){
@@ -163,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                     mClassifiers.add(
                             TensorFlowClassifier.create(getAssets(), "Keras",
                                     "/storage/emulated/0/Documents/model.pb", "/storage/emulated/0/Documents/labels.txt", 200,
-                                    "conv2d_1_input", "output_node0", false));//"dense_2/Softmax"
+                                    "conv2d_1_input", "dense_2/Softmax", false));//"dense_2/Softmax" :"output_node0"
 
 
                 } catch (final Exception e) {

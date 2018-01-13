@@ -61,6 +61,15 @@ public class TensorFlowClassifier implements Classifier {
         labels.add("1");
         labels.add("2");
 
+        /*labels.add("3");
+        labels.add("4");
+        labels.add("5");
+        labels.add("6");
+        labels.add("7");
+        labels.add("8");
+        labels.add("9");*/
+
+
 
         //br.close();
         return labels;
@@ -114,12 +123,12 @@ public class TensorFlowClassifier implements Classifier {
         //give it the input name, raw pixels from the drawing,
         //input size
         tfHelper.feed(inputName, pixels, 1, inputSize, inputSize, 1);
-
         //probabilities
         if (feedKeepProb) {
             tfHelper.feed("keep_prob", new float[] { 1 });
         }
         //get the possible outputs
+
         tfHelper.run(outputNames);
 
         //get the output
