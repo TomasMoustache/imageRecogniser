@@ -5,9 +5,8 @@ package com.example.dovydas.projectneural;
  */
 public class Classification {
 
-    //conf is the output
     private float conf;
-    //input label
+
     private String label;
 
     Classification() {
